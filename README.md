@@ -80,6 +80,7 @@ Result = AFYDPNYXGNARCABLNENP
 ```
 
 #### Step 2 set cookie same node 1 (Make sure the erlang cookies are the same all node.)
+```
 [Node 2-3]
 service rabbitmq-server stop
 echo -n "AFYDPNYXGNARCABLNENP" > /var/lib/rabbitmq/.erlang.cookie
