@@ -103,7 +103,7 @@ Result
 Cluster status of node 'rabbit@rabbitmq-1' ...
 [{nodes,[{disc,['rabbit@rabbitmq-1','rabbit@rabbitmq-2',
                 'rabbit@rabbitmq-3']}]},
- **{running_nodes,['rabbit@rabbitmq-3','rabbit@rabbitmq-2','rabbit@rabbitmq-1']},**
+ `**{running_nodes,['rabbit@rabbitmq-3','rabbit@rabbitmq-2','rabbit@rabbitmq-1']},**`
  {cluster_name,<<"rabbit@rabbitmq-1">>},
 
  {partitions,[]}]
