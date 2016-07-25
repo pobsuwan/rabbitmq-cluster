@@ -1,4 +1,4 @@
-# How to config rabbitmq server cluster for SoftnixLogger [3 nodes]
+# How to config rabbitmq server cluster [3 nodes]
 
 ## Do after install SLGInstallers
 
@@ -23,7 +23,9 @@ chkconfig rabbitmq-server on
 #### Verify rabbitmq-server is running [all nodes]
 ```
 rabbitmqctl status
-Result
+```
+###### Result
+```
 Status of node 'rabbit@rabbitmq-1' ...
 [{pid,2163},
  {running_applications,[{rabbit,"RabbitMQ","3.6.0"},
@@ -72,14 +74,16 @@ Status of node 'rabbit@rabbitmq-1' ...
 ```
 
 ### Create rabbitmq-server cluster
-#### Step 1 view /var/lib/rabbitmq/.erlang.cookie
+#### Step 1 view /var/lib/rabbitmq/.erlang.cookie [Node 1]
 ```
 [Node 1]
 cat /var/lib/rabbitmq/.erlang.cookie
-Result = AFYDPNYXGNARCABLNENP
 ```
+`
+Result = AFYDPNYXGNARCABLNENP
+`
 
-#### Step 2 set cookie same node 1 (Make sure the erlang cookies are the same all node.)
+#### Step 2 set cookie same node 1 (Make sure the erlang cookies are the same all node.) [Node 2-3]
 ```
 [Node 2-3]
 service rabbitmq-server stop
@@ -87,7 +91,7 @@ echo -n "AFYDPNYXGNARCABLNENP" > /var/lib/rabbitmq/.erlang.cookie
 service rabbitmq-server start
 ```
 
-#### Step 3 join cluster to node 1
+#### Step 3 join cluster to node 1 [Node 2-3]
 ```
 [Node 2-3]
 rabbitmqctl stop_app
@@ -99,7 +103,9 @@ rabbitmqctl start_app
 #### Verify rabbitmq-server cluster [all nodes]
 ```
 rabbitmqctl cluster_status
-Result
+```
+###### Result
+```
 Cluster status of node 'rabbit@rabbitmq-1' ...
 [{nodes,[{disc,['rabbit@rabbitmq-1','rabbit@rabbitmq-2',
                 'rabbit@rabbitmq-3']}]},
